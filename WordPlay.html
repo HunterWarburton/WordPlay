@@ -1,36 +1,30 @@
 <html>
-  <head>
-    <title>Anagram Generator</title>
-  </head>
-  <body>
-    <h1>Anagram Generator</h1>
-    <form>
-      <label for="word">Enter a word:</label><br>
-      <input type="text" id="word" name="word"><br>
-      <button type="button" onclick="findAnagrams()">Find Anagrams</button>
-    </form> 
-    <br>
-    <div id="anagrams"></div>
-    
-    <script src="anagrams.js"></script>
-    <script>
-      function findAnagrams() {
-        // Get the word the user entered
-        const word = document.getElementById("word").value;
-        
-        // Calculate all the anagrams of the word
-        // This function is defined in the anagrams.js file
-        const anagrams = calculateAnagrams(word);
-        
-        // Display the anagrams
-        const anagramsDiv = document.getElementById("anagrams");
-        anagramsDiv.innerHTML = "";
-        for (const anagram of anagrams) {
-          const p = document.createElement("p");
-          p.innerText = anagram;
-          anagramsDiv.appendChild(p);
-        }
-      }
-    </script>
-  </body>
+<head>
+  <title>Anagram Calculator</title>
+</head>
+<body>
+  <h1>Anagram Calculator</h1>
+  <p>Enter a word to see its anagrams:</p>
+  <input type="text" id="inputWord">
+  <button id="calculateButton">Calculate Anagrams</button>
+  <br>
+  <div id="resultDiv">
+    <p>Anagrams:</p>
+    <ul id="anagramList"></ul>
+  </div>
+  <script src="anagrams.js"></script>
+  <script>
+    document.getElementById("calculateButton").addEventListener("click", function() {
+      var inputWord = document.getElementById("inputWord").value;
+      var anagrams = calculateAnagrams(inputWord);
+      var anagramList = document.getElementById("anagramList");
+      anagramList.innerHTML = "";
+      anagrams.forEach(function(anagram) {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = anagram;
+        anagramList.appendChild(listItem);
+      });
+    });
+  </script>
+</body>
 </html>
