@@ -1,18 +1,22 @@
 <html>
 <head>
-  <title>Anagram Calculator</title>
+  <title>WordPlay</title>
 </head>
 <body>
-  <h1>Anagram Calculator</h1>
-  <p>Enter a word to see its anagrams:</p>
+  <h1>Wordplay</h1>
+  <p>Enter a word to see its anagrams and generate an acronym:</p>
   <input type="text" id="inputWord">
   <button id="calculateButton">Calculate Anagrams</button>
+  <button id="acronymButton">Generate Acronym</button>
   <br>
   <div id="resultDiv">
     <p>Anagrams:</p>
     <ul id="anagramList"></ul>
+    <p>Acronym:</p>
+    <p id="acronym"></p>
   </div>
   <script src="anagrams.js"></script>
+  <script src="acronym.js"></script>
   <script>
     document.getElementById("calculateButton").addEventListener("click", function() {
       var inputWord = document.getElementById("inputWord").value;
@@ -24,6 +28,11 @@
         listItem.innerHTML = anagram;
         anagramList.appendChild(listItem);
       });
+    });
+    document.getElementById("acronymButton").addEventListener("click", function() {
+      var inputWord = document.getElementById("inputWord").value;
+      var acronym = generateAcronym(inputWord);
+      document.getElementById("acronym").innerHTML = acronym;
     });
   </script>
 </body>
