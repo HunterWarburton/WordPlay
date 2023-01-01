@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Wordplay - Anagram Generator</title>
+  </head>
+  <body>
+    <h1>Anagram Generator</h1>
+    <form>
+      <label for="word">Enter a word:</label><br>
+      <input type="text" id="word" name="word"><br>
+      <button type="button" onclick="findAnagrams()">Find Anagrams</button>
+    </form> 
+    <br>
+    <div id="anagrams"></div>
+    
+    <script src="anagrams.js"></script>
+    <script>
+      function findAnagrams() {
+        // Get the word the user entered
+        const word = document.getElementById("word").value;
+        
+        // Calculate all the anagrams of the word
+        // This function is defined in the anagrams.js file
+        const anagrams = calculateAnagrams(word);
+        
+        // Display the anagrams
+        const anagramsDiv = document.getElementById("anagrams");
+        anagramsDiv.innerHTML = "";
+        for (const anagram of anagrams) {
+          const p = document.createElement("p");
+          p.innerText = anagram;
+          anagramsDiv.appendChild(p);
+        }
+      }
+    </script>
+  </body>
+</html>
